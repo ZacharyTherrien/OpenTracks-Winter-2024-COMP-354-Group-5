@@ -58,6 +58,7 @@ public class TrackUtils {
             track.setDescription(description);
             update = true;
         }
+        //TODO: add update for ski gear here
         if (update) {
             contentProviderUtils.updateTrack(track);
         }
