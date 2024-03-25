@@ -2,8 +2,6 @@ package de.dennisguse.opentracks;
 
 import static android.app.PendingIntent.getActivity;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -30,9 +28,10 @@ public class SeasonalActivity extends AbstractActivity {
         setTitle("Seasonal Activity!");
         seasonsRecyclerView = findViewById(R.id.seasons_recyclerView);
 
-        GoToIndividualSite(findViewById(R.id.activity_game_answer1_btn));
-        GoToIndividualSite(findViewById(R.id.activity_game_answer2_btn));
-        GoToIndividualSite(findViewById(R.id.activity_game_answer3_btn));
+        GoToIndividualSite(findViewById(R.id.LifeTime_button));
+        GoToIndividualSite(findViewById(R.id.Winter2024_Button));
+        GoToIndividualSite(findViewById(R.id.Winter2023_Button));
+        GoToIndividualSite(findViewById(R.id.Winter2022_Button));
 
         setSupportActionBar(viewBinding.bottomAppBarLayout.bottomAppBar);
     }
