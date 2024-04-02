@@ -87,11 +87,16 @@ public class UserProfileFragment extends PreferenceFragmentCompat {
         Spinner countryDropdown = formView.findViewById(R.id.countryDropdown);
         SortedSet<String> countryOptions = new TreeSet<>();
         for(Locale locale : Locale.getAvailableLocales()) {
-            if (!TextUtils.isEmpty(locale.getDisplayCountry())) {
+            if (!TextUtils.isEmpty(locale.getDisplayCountry()) && !locale.getDisplayCountry().equals("Canada")) {
                 countryOptions.add(locale.getDisplayCountry());
             }
         }
-        ArrayAdapter<String> countryAdapter = new ArrayAdapter<>(formView.getContext(), android.R.layout.simple_spinner_dropdown_item, countryOptions.toArray(new String[0]));
+        String[] origCountries = countryOptions.toArray(new String[0]);
+        String[] countries = new String[origCountries.length + 1];
+        countries[0] = "Canada";
+        System.arraycopy(origCountries, 0, countries, 1, origCountries.length);
+
+        ArrayAdapter<String> countryAdapter = new ArrayAdapter<>(formView.getContext(), android.R.layout.simple_spinner_dropdown_item, countries);
         countryDropdown.setAdapter(countryAdapter);
 
         // Create the AlertDialog.
