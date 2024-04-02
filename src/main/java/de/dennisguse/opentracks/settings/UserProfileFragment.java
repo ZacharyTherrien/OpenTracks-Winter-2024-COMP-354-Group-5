@@ -6,11 +6,14 @@ import android.app.AlertDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +22,10 @@ import androidx.fragment.app.DialogFragment;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SwitchPreference;
+
+import java.util.Locale;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import de.dennisguse.opentracks.R;
 import de.dennisguse.opentracks.data.models.Height;
@@ -71,8 +78,21 @@ public class UserProfileFragment extends PreferenceFragmentCompat {
         EditText editDateOfBirth = formView.findViewById(R.id.editDateOfBirth);
         EditText editHeight = formView.findViewById(R.id.editHeight);
         EditText editWeight = formView.findViewById(R.id.editWeight);
-        EditText editGender = formView.findViewById(R.id.editGender);
-        EditText editLocation = formView.findViewById(R.id.editLocation);
+
+        Spinner genderDropdown = formView.findViewById(R.id.genderDropdown);
+        String[] genderOptions = new String[]{"Male", "Female"};
+        ArrayAdapter<String> genderAdapter = new ArrayAdapter<>(formView.getContext(), android.R.layout.simple_spinner_dropdown_item, genderOptions);
+        genderDropdown.setAdapter(genderAdapter);
+
+        Spinner countryDropdown = formView.findViewById(R.id.countryDropdown);
+        SortedSet<String> countryOptions = new TreeSet<>();
+        for(Locale locale : Locale.getAvailableLocales()) {
+            if (!TextUtils.isEmpty(locale.getDisplayCountry())) {
+                countryOptions.add(locale.getDisplayCountry());
+            }
+        }
+        ArrayAdapter<String> countryAdapter = new ArrayAdapter<>(formView.getContext(), android.R.layout.simple_spinner_dropdown_item, countryOptions.toArray(new String[0]));
+        countryDropdown.setAdapter(countryAdapter);
 
         // Create the AlertDialog.
         new AlertDialog.Builder(getContext())
@@ -84,8 +104,8 @@ public class UserProfileFragment extends PreferenceFragmentCompat {
                     String dateOfBirth = editDateOfBirth.getText().toString();
                     String height = editHeight.getText().toString();
                     String weight = editWeight.getText().toString();
-                    String gender = editGender.getText().toString();
-                    String location = editLocation.getText().toString();
+                    String gender = genderDropdown.getSelectedItem().toString();
+                    String location = countryDropdown.getSelectedItem().toString();
 
                     // Validate and save the data if valid.
                     if (validateInputs(nickname, dateOfBirth, height, weight, gender, location)) {
