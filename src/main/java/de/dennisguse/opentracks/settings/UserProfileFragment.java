@@ -10,7 +10,9 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +21,10 @@ import androidx.fragment.app.DialogFragment;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SwitchPreference;
+
+import com.github.dhaval2404.imagepicker.ImagePicker;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.activity.*;
 
 import de.dennisguse.opentracks.R;
 import de.dennisguse.opentracks.data.models.Height;
@@ -43,6 +49,18 @@ public class UserProfileFragment extends PreferenceFragmentCompat {
                 return true;
             });
         }
+        //trial
+        Preference editProfilePic = findPreference("edit_profile_pic");
+        if(editProfilePic != null) {
+            editPreference.setOnPreferenceClickListener(preference -> {
+                ImagePicker.with(UserProfileFragment.this)
+                        .crop()	    			//Crop image(Optional), Check Customization for more option
+                        .compress(1024)			//Final image size will be less than 1 MB(Optional)
+                        .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
+                        .start();
+                return true;
+            });
+        }
 
         // Check toggle status for leaderboard preferences
         leaderboardSwitch = findPreference("leaderboard_switch");
@@ -61,7 +79,6 @@ public class UserProfileFragment extends PreferenceFragmentCompat {
             }
         });
     }
-
     private void showEditProfileDialog() {
         // Inflate the custom layout for the edit dialog.
         View formView = LayoutInflater.from(getContext()).inflate(R.layout.edit_profile_form, null);
@@ -126,7 +143,6 @@ public class UserProfileFragment extends PreferenceFragmentCompat {
 
         return true;
     }
-
     private void displayCustomSharingDialog(){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());

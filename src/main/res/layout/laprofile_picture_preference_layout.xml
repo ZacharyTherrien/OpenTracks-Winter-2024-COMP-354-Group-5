@@ -32,6 +32,7 @@
             android:layout_height="wrap_content"
             app:fabCustomSize="40dp"
             android:clickable="true"
+            android:focusable="true"
             app:layout_constraintBottom_toBottomOf="@+id/profileImageView"
             app:layout_constraintEnd_toEndOf="@+id/profileImageView"
             app:srcCompat="@drawable/edit_profilepic_camera"
