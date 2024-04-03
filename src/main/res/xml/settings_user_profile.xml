@@ -20,6 +20,12 @@
             android:title="@string/edit_profile_title"
             android:summary="@string/edit_profile_summary"
             android:icon="@android:drawable/ic_menu_edit" />
+        //trial
+        <Preference
+            android:key="edit_profile_pic"
+            android:title="Edit Profile Picture"
+            android:summary="Change your profile picture"
+            android:icon="@drawable/edit_profilepic_camera" />
 
         <SwitchPreference
             android:layout_width="match_parent"
