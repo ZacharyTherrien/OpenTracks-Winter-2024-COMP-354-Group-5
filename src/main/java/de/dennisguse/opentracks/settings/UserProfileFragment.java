@@ -31,8 +31,6 @@ import androidx.preference.SwitchPreference;
 import androidx.core.app.ActivityCompat;
 
 import com.github.dhaval2404.imagepicker.ImagePicker;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import androidx.activity.*;
 
 import java.util.Objects;
 
