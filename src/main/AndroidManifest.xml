@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:installLocation="auto">
+    android:installLocation="auto" >
 
     <supports-screens
         android:anyDensity="true"
@@ -64,10 +64,24 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/OpenTracksTheme">
+      <activity
+            android:name=".ui.aggregatedStatistics.dailyStats.DailyStatsActivity"
+            android:exported="false" />
+      <activity
+            android:name=".ui.friends.FriendsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.leaderboard.LeaderboardActivity"
+            android:exported="false"
+            android:label="@string/title_activity_leaderboard"
+            android:theme="@style/OpenTracksTheme.NoActionBar" />
+        <activity
+            android:name=".settings.MaintenanceInfo"
+            android:exported="true" />
         <activity
             android:name=".publicapi.StartRecording"
             android:exported="true"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashTheme" >
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -75,7 +89,7 @@
         <activity
             android:name=".publicapi.StopRecording"
             android:exported="true"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashTheme" >
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -84,7 +98,7 @@
             android:name=".introduction.IntroductionActivity"
             android:exported="true"
             android:launchMode="singleTop"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -121,7 +135,7 @@
             </intent-filter>
             <intent-filter
                 android:label="@string/app_name"
-                android:priority="50">
+                android:priority="50" >
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.SEND" />
 
@@ -146,7 +160,7 @@
             </intent-filter>
             <intent-filter
                 android:label="@string/app_name"
-                android:priority="50">
+                android:priority="50" >
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.SEND" />
 
@@ -178,7 +192,7 @@
             </intent-filter>
             <intent-filter
                 android:label="@string/app_name"
-                android:priority="50">
+                android:priority="50" >
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.SEND" />
 
@@ -203,7 +217,7 @@
             </intent-filter>
             <intent-filter
                 android:label="@string/app_name"
-                android:priority="50">
+                android:priority="50" >
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.SEND" />
 
@@ -235,7 +249,7 @@
             </intent-filter>
             <intent-filter
                 android:label="@string/app_name"
-                android:priority="50">
+                android:priority="50" >
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.SEND" />
 
@@ -260,7 +274,7 @@
             </intent-filter>
             <intent-filter
                 android:label="@string/app_name"
-                android:priority="50">
+                android:priority="50" >
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.SEND" />
 
@@ -285,7 +299,7 @@
         </activity>
         <activity
             android:name=".ui.markers.MarkerDetailActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="de.dennisguse.opentracks.MarkerDetails" />
 
@@ -297,7 +311,7 @@
             android:name=".ui.markers.MarkerListActivity"
             android:exported="true"
             android:label="@string/menu_markers"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop" >
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
@@ -309,7 +323,7 @@
         <activity
             android:name=".TrackListActivity"
             android:exported="true"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop" >
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
@@ -322,7 +336,7 @@
         <activity android:name=".TrackStoppedActivity" />
         <activity
             android:name=".TrackRecordingActivity"
-            android:parentActivityName=".TrackListActivity">
+            android:parentActivityName=".TrackListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".TrackListActivity" />
@@ -336,6 +350,17 @@
         <activity android:name=".settings.SettingsActivity" />
         <activity android:name=".settings.SettingsCustomLayoutListActivity" />
         <activity android:name=".settings.SettingsCustomLayoutEditActivity" />
+        <activity android:name=".ui.aggregatedStatistics.StatisticsPreviewActivity"
+            android:exported="true"/>
+        <activity android:name=".ui.aggregatedStatistics.StatisticsActivity"
+            android:exported="true">
+<!--        <intent-filter>-->
+<!--            <action android:name="android.intent.action.MAIN" />-->
+
+<!--            <category android:name="android.intent.category.LAUNCHER" />-->
+<!--        </intent-filter>-->
+    </activity>
+
         <activity
             android:name=".ShowErrorActivity"
             android:excludeFromRecents="true"
@@ -366,7 +391,7 @@
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
             android:exported="false"
-            android:grantUriPermissions="true">
+            android:grantUriPermissions="true" >
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
