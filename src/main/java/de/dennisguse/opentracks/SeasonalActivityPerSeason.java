@@ -33,7 +33,7 @@ public class SeasonalActivityPerSeason extends AbstractActivity
             changeTitle(data.getString("seasonTitle"));
         }
 
-        TextView distanceTraveledTextView = findViewById(R.id.distanceTraveled);
+        TextView distanceTraveledTextView = findViewById(R.id.LifeTime_button);
         TextView totalTimeTextView = findViewById(R.id.totalTime);
         TextView averageSpeedTextView = findViewById(R.id.avgSpeed);
         TextView maxSpeedTextView = findViewById(R.id.maxSpeed);
