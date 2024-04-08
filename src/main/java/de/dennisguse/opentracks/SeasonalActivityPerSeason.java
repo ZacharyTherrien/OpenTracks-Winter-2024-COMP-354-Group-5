@@ -18,13 +18,13 @@ import com.google.android.material.appbar.MaterialToolbar;
 
 import de.dennisguse.opentracks.databinding.ActivitySeasonalBinding;
 import de.dennisguse.opentracks.databinding.ActivitySeasonalPerSeasonBinding;
+import de.dennisguse.opentracks.ui.aggregatedStatistics.DummyDataGenerator;
 
 public class SeasonalActivityPerSeason extends AbstractActivity
 {
     private ActivitySeasonalPerSeasonBinding viewBinding;
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Bundle data = getIntent().getExtras();
@@ -33,10 +33,16 @@ public class SeasonalActivityPerSeason extends AbstractActivity
             changeTitle(data.getString("seasonTitle"));
         }
 
+        TextView distanceTraveledTextView = findViewById(R.id.distanceTraveled);
+        TextView totalTimeTextView = findViewById(R.id.totalTime);
+        TextView averageSpeedTextView = findViewById(R.id.avgSpeed);
+        TextView maxSpeedTextView = findViewById(R.id.maxSpeed);
+
+
+
         setSupportActionBar(viewBinding.bottomAppBarLayout.bottomAppBar);
     }
-    private void MakeYesNoButton(Button button)
-    {
+    private void MakeYesNoButton(Button button) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this)
                 .setTitle("Heading to " + button.getText()).setMessage("Is this okay?")
                 .setPositiveButton("Yes", (dialogInterface, i) -> {
@@ -44,15 +50,13 @@ public class SeasonalActivityPerSeason extends AbstractActivity
                 })
                 .setNegativeButton("No", (dialogInterface, i) -> dialogInterface.cancel());
     }
-    private void changeTitle(String newTitle)
-    {
+    private void changeTitle(String newTitle) {
         MaterialToolbar materialToolbar = (MaterialToolbar)findViewById(R.id.season_materialtoolbar);
         materialToolbar.setTitle(newTitle);
     }
 
     @Override
-    protected View getRootView()
-    {
+    protected View getRootView() {
         viewBinding = ActivitySeasonalPerSeasonBinding.inflate(getLayoutInflater());
         return viewBinding.getRoot();
     }
