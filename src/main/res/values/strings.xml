@@ -394,6 +394,10 @@ limitations under the License.
     <string name="settings_ski_profile_title">Ski Profile</string>
     <string name="settings_ski_profile_summary">Personalized ski profile</string>
 
+    <string name="ski_resort_name">Name</string>
+    <string name="ski_resort_country">Country</string>
+    <string name="ski_resort_province">Province</string>
+
     <!-- Settings Advanced -->
     <string name="settings_advanced">Advanced</string>
     <string name="settings_default_trackfileformat">Export/sharing file format</string>
