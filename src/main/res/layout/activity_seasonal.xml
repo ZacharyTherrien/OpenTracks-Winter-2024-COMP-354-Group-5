@@ -2,11 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/seasonalActivityView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:visibility="visible"
     tools:context=".SeasonalActivity">
-
 
 
     <LinearLayout
@@ -24,14 +25,23 @@
                 android:id="@+id/season_list_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                android:visibility="visible"
                 app:navigationIcon="@drawable/ic_seasonal_activity_24dp"
                 app:title="Seasonal Data" />
         </com.google.android.material.appbar.AppBarLayout>
 
+        <TextView
+            android:id="@+id/seasonalEmptyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="There is no data for any season."
+            android:textAlignment="center"
+            android:visibility="invisible" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/seasons_recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content">
 
         </androidx.recyclerview.widget.RecyclerView>
 
@@ -42,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:background="@android:color/white"
-            android:text="Life_Time_Data"
+            android:text="@string/Life_Time_Data"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:background="@android:color/white"
-            android:text="2024 Winter Season"
+            android:text="@string/Winter_2024"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:background="@android:color/white"
-            android:text="2023 Winter Season"
+            android:text="@string/Winter_2023"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:background="@android:color/white"
-            android:text="2022 Winter Season"
+            android:text="@string/Winter_2022"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -59,7 +59,7 @@
                 android:text="Total Time" />
 
             <TextView
-                android:id="@+id/aggregatedTime"
+                android:id="@+id/totalTime"
                 style="@style/TextAppearance.OpenTracks.PrimaryValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
