@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layout_gravity="center"
     tools:context=".SeasonalActivityPerSeason">
 
     <LinearLayout
@@ -14,7 +15,8 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center">
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/season_materialtoolbar"
@@ -24,14 +26,98 @@
                 app:title="Seasonal Data" />
         </com.google.android.material.appbar.AppBarLayout>
 
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Favorite Resort"
+            android:theme="@style/OpenTracksTheme" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Resort Name"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:theme="@style/OpenTracksTheme" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="137"
+            android:textSize="34sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Runs"
+            android:theme="@style/OpenTracksTheme" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Favorite Lifts"
+            android:theme="@style/OpenTracksTheme" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="1. t-bar"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="2. magic carpet"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="3. summit chair"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="4. pine chair"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="5. Maple chair"
+            android:textSize="25sp" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/aggregated_recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="496dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <include
+            android:id="@+id/bottom_app_bar_layout"
+            layout="@layout/bottomappbar" />
 
     </LinearLayout>
 
-    <include
-        android:id="@+id/bottom_app_bar_layout"
-        layout="@layout/bottomappbar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
