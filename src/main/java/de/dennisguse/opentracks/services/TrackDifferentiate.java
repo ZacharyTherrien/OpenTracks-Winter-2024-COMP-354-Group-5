@@ -32,6 +32,25 @@ public class TrackDifferentiate {
     private ArrayList<TrackPoint> runPoints;
     private ArrayList<ArrayList<TrackPoint>> runs = new ArrayList<ArrayList<TrackPoint>>();
 
+    private Chairlift chairlift;
+    private SkiRun skiRun;
+
+    public Chairlift getChairlift() {
+        return chairlift;
+    }
+
+    public void setChairlift(Chairlift chairlift) {
+        this.chairlift = chairlift;
+    }
+
+    public SkiRun getSkiRun() {
+        return skiRun;
+    }
+
+    public void setSkiRun(SkiRun skiRun) {
+        this.skiRun = skiRun;
+    }
+
     public TrackDifferentiate(Track.Id tid, Context c) {
         trackId = tid;
         contentProviderUtils = new ContentProviderUtils(c);
@@ -74,5 +93,8 @@ public class TrackDifferentiate {
 
     public List<ArrayList<TrackPoint>> getRuns() {
         return runs;
+    }
+
+    public Chairlift getChairLift() {
     }
 }

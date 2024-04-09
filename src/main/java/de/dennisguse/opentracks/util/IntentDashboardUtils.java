@@ -23,6 +23,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 import de.dennisguse.opentracks.R;
 import de.dennisguse.opentracks.data.ContentProviderUtils;
 import de.dennisguse.opentracks.data.ShareContentProvider;
+import de.dennisguse.opentracks.data.models.Chairlift;
+import de.dennisguse.opentracks.data.models.SkiRun;
 import de.dennisguse.opentracks.data.models.Track;
 import de.dennisguse.opentracks.data.tables.MarkerColumns;
 import de.dennisguse.opentracks.data.tables.TrackPointsColumns;
@@ -93,6 +95,7 @@ public class IntentDashboardUtils {
     public static void setTrackDifferentiate(TrackDifferentiate trackDifferentiate) {
         IntentDashboardUtils.trackDifferentiate = trackDifferentiate;
     }
+
 
 
     public static void showTrackOnMap(Context context, boolean isRecording, Track.Id... trackIds) {
@@ -295,7 +298,9 @@ public class IntentDashboardUtils {
      */
     public TrackDifferentiate getTrackDifferentiate(Context context, Track.Id tid){
     	trackDifferentiate = new TrackDifferentiate(tid, context);
+        trackDifferentiate.differentiate();
 
+        IntentDashboardUtils.setTrackDifferentiate(trackDifferentiate);
         return null;
     }
 }
