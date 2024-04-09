@@ -301,6 +301,6 @@ public class IntentDashboardUtils {
         trackDifferentiate.differentiate();
 
         IntentDashboardUtils.setTrackDifferentiate(trackDifferentiate);
-        return null;
+        return trackDifferentiate;
     }
 }
