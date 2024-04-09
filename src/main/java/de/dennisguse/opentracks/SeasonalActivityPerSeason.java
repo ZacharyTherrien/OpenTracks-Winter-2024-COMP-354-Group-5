@@ -22,6 +22,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import de.dennisguse.opentracks.data.TrackSelection;
 import de.dennisguse.opentracks.databinding.ActivitySeasonalBinding;
@@ -31,50 +32,37 @@ import de.dennisguse.opentracks.ui.aggregatedStatistics.AggregatedStatisticsMode
 import de.dennisguse.opentracks.ui.aggregatedStatistics.DummyDataGenerator;
 import de.dennisguse.opentracks.ui.aggregatedStatistics.FilterDialogFragment;
 
-public class SeasonalActivityPerSeason extends AbstractActivity
-{
-    public static final String EXTRA_TRACK_IDS = "track_ids";
+public class SeasonalActivityPerSeason extends AbstractActivity {
     private final TrackSelection selection = new TrackSelection();
     private AggregatedStatisticsModel viewModel;
     private AggregatedStatisticsAdapter adapter;
-    private MenuItem filterItem;
     private ActivitySeasonalPerSeasonBinding viewBinding;
+    private LocalDateTime from;
+    private LocalDateTime to;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         Bundle data = getIntent().getExtras();
+
         if (data != null)
         {
             changeTitle(data.getString("seasonTitle"));
         }
 
-        TextView distanceTraveledTextView = findViewById(R.id.distanceTraveled);
-        TextView totalTimeTextView = findViewById(R.id.totalTime);
-        TextView averageSpeedTextView = findViewById(R.id.avgSpeed);
-        TextView maxSpeedTextView = findViewById(R.id.maxSpeed);
-
-//        List<Track.Id> trackIds = getIntent().getParcelableArrayListExtra(EXTRA_TRACK_IDS);
-//        if (trackIds != null && !trackIds.isEmpty()) {
-//            trackIds.forEach(selection::addTrackId);
-//        }
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         adapter = new AggregatedStatisticsAdapter(this, null);
         viewBinding.aggregatedRecyclerView.setLayoutManager(layoutManager);
         viewBinding.aggregatedRecyclerView.setAdapter(adapter);
-
         viewModel = new ViewModelProvider(this).get(AggregatedStatisticsModel.class);
+        selection.addActivityType("skiing");
 
-        LocalDateTime from = LocalDateTime.of(2024, 4, 1, 0, 0);
-        LocalDateTime to = LocalDateTime.of(2024, 4, 8, 20, 0);;
+        if(data != null && !Objects.equals(data.getString("seasonTitle"), getResources().getString(R.string.Life_Time_Data))){
+            setFromToDate(data.getString("seasonTitle"));
+            selection.addDateRange(from.atZone(ZoneId.systemDefault()).toInstant(), to.atZone(ZoneId.systemDefault()).toInstant());
+            viewModel.updateSelection(selection);
+        }
 
-        selection.addDateRange(from.atZone(ZoneId.systemDefault()).toInstant(), to.atZone(ZoneId.systemDefault()).toInstant());
-        viewModel.updateSelection(selection);
         viewModel.getAggregatedStats(selection).observe(this, aggregatedStatistics -> {
-//            if ((aggregatedStatistics == null || aggregatedStatistics.getCount() == 0) && !selection.isEmpty()) {
-//                viewBinding.seasonalEmptyText.setText("");
-//            }
             if (aggregatedStatistics != null) {
                 adapter.swapData(aggregatedStatistics);
             }
@@ -87,10 +75,10 @@ public class SeasonalActivityPerSeason extends AbstractActivity
     private void checkListEmpty() {
         if (adapter.getItemCount() == 0) {
             viewBinding.aggregatedRecyclerView.setVisibility(View.GONE);
-            //viewBinding.seasonalEmptyText.setVisibility(View.VISIBLE);
+            viewBinding.seasonPerSeasonEmptyText.setVisibility(View.VISIBLE);
         } else {
             viewBinding.aggregatedRecyclerView.setVisibility(View.VISIBLE);
-            //viewBinding.seasonalEmptyText.setVisibility(View.GONE);
+            viewBinding.seasonPerSeasonEmptyText.setVisibility(View.GONE);
         }
     }
 
@@ -112,5 +100,20 @@ public class SeasonalActivityPerSeason extends AbstractActivity
     protected View getRootView() {
         viewBinding = ActivitySeasonalPerSeasonBinding.inflate(getLayoutInflater());
         return viewBinding.getRoot();
+    }
+
+    private void setFromToDate(String title){
+        if(Objects.equals(title, getResources().getString(R.string.Winter_2024))){
+            from = LocalDateTime.of(2024, 1, 1, 0, 0);
+            to = LocalDateTime.of(2024, 4, 8, 23, 59);
+        }
+        else if(Objects.equals(title, getResources().getString(R.string.Winter_2023))){
+            from = LocalDateTime.of(2023, 1, 1, 0, 0);
+            to = LocalDateTime.of(2023, 4, 8, 23, 59);
+        }
+        else if(Objects.equals(title, getResources().getString(R.string.Winter_2022))){
+            from = LocalDateTime.of(2022, 1, 1, 0, 0);
+            to = LocalDateTime.of(2022, 4, 8, 23, 59);
+        }
     }
 }

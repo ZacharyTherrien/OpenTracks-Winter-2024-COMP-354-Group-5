@@ -30,6 +30,7 @@
             android:id="@+id/textView15"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="15px"
             android:text="Favorite Resort"
             android:theme="@style/OpenTracksTheme" />
 
@@ -64,6 +65,7 @@
             android:id="@+id/textView19"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="15px"
             android:text="Favorite Lifts"
             android:theme="@style/OpenTracksTheme" />
 
@@ -106,6 +108,13 @@
             android:gravity="center"
             android:text="5. Maple chair"
             android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/seasonPerSeasonEmptyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No Data for this season"
+            android:textAlignment="center" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/aggregated_recyclerView"
