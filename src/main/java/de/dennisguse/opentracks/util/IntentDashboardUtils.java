@@ -33,6 +33,7 @@ import de.dennisguse.opentracks.io.file.TrackFileFormat;
 import de.dennisguse.opentracks.services.TrackDifferentiate;
 import de.dennisguse.opentracks.settings.PreferencesUtils;
 import de.dennisguse.opentracks.stats.OverallStatistics;
+import de.dennisguse.opentracks.services.TrackDifferentiate;
 
 /**
  * Create an {@link Intent} to request showing tracks on a Map or a Dashboard.
@@ -299,7 +300,6 @@ public class IntentDashboardUtils {
     public TrackDifferentiate getTrackDifferentiate(Context context, Track.Id tid){
     	trackDifferentiate = new TrackDifferentiate(tid, context);
         trackDifferentiate.differentiate();
-
         IntentDashboardUtils.setTrackDifferentiate(trackDifferentiate);
         return trackDifferentiate;
     }
