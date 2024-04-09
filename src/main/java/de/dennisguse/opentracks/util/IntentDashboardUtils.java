@@ -28,6 +28,7 @@ import de.dennisguse.opentracks.data.tables.MarkerColumns;
 import de.dennisguse.opentracks.data.tables.TrackPointsColumns;
 import de.dennisguse.opentracks.data.tables.TracksColumns;
 import de.dennisguse.opentracks.io.file.TrackFileFormat;
+import de.dennisguse.opentracks.services.TrackDifferentiate;
 import de.dennisguse.opentracks.settings.PreferencesUtils;
 import de.dennisguse.opentracks.stats.OverallStatistics;
 
@@ -75,7 +76,6 @@ public class IntentDashboardUtils {
     private static final int NONE_SELECTED = -1;
     
     // Internal reference to sorted TrackPoints into two categories (1) chairLift (2) SkiRun, with internal objects to call for relevant info displaying
-    private TrackDifferentiate trackDifferentiate;
 
     private IntentDashboardUtils() {
     }
@@ -88,6 +88,14 @@ public class IntentDashboardUtils {
      * @param isRecording are we currently recording?
      * @param trackIds the track ids
      */
+
+    private static TrackDifferentiate trackDifferentiate; // Add internal reference
+
+    public static void setTrackDifferentiate(TrackDifferentiate trackDifferentiate) {
+        IntentDashboardUtils.trackDifferentiate = trackDifferentiate;
+    }
+
+
     public static void showTrackOnMap(Context context, boolean isRecording, Track.Id... trackIds) {
         Map<String, String> options = TrackFileFormat.toPreferenceIdLabelMap(context.getResources(), IntentDashboardUtils.SHOW_ON_MAP_TRACK_FILE_FORMATS);
         options.put(IntentDashboardUtils.PREFERENCE_ID_DASHBOARD, context.getString(R.string.show_on_dashboard));
@@ -284,9 +292,11 @@ public class IntentDashboardUtils {
      * get access internal data such as average speed, wait time, total distance, etc.
      * 
      * @param context the context for relevant TrackPoints to differentiate
-     * @param trackIds the track ids for relevant TrackPoints to differentiate
+     * @param tid the track ids for relevant TrackPoints to differentiate
      */
     public TrackDifferentiate getTrackDifferentiate(Context context, Track.Id tid){
-    	trackDifferentiate = TrackDifferentiate(context, tid);
+    	trackDifferentiate = new TrackDifferentiate(tid, context);
+
+        return null;
     }
 }
