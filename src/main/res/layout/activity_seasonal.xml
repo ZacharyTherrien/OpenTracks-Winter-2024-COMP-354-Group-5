@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:visibility="visible"
     tools:context=".SeasonalActivity">
 
 
@@ -24,6 +25,7 @@
                 android:id="@+id/season_list_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                android:visibility="visible"
                 app:navigationIcon="@drawable/ic_seasonal_activity_24dp"
                 app:title="Seasonal Data" />
         </com.google.android.material.appbar.AppBarLayout>
@@ -33,7 +35,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="There is no data for any season."
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:visibility="invisible" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/seasons_recyclerView"
