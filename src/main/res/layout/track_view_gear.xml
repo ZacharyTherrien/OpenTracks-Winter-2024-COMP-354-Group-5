@@ -92,7 +92,7 @@
                 android:id="@+id/skiLeftLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
@@ -104,8 +104,8 @@
 
                 <Spinner
                     android:id="@+id/skiDropDown"
-                    android:layout_width="190dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:background="@android:drawable/btn_dropdown"
                     android:spinnerMode="dropdown"
                     android:textAlignment="center" />
@@ -132,7 +132,7 @@
                 android:id="@+id/bootLeftLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
@@ -144,7 +144,7 @@
 
                 <Spinner
                     android:id="@+id/bootDropDown"
-                    android:layout_width="190dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:drawable/btn_dropdown"
                     android:spinnerMode="dropdown"
@@ -173,7 +173,7 @@
                 android:id="@+id/poleLeftLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
@@ -185,7 +185,7 @@
 
                 <Spinner
                     android:id="@+id/poleDropDown"
-                    android:layout_width="190dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:drawable/btn_dropdown"
                     android:spinnerMode="dropdown"
