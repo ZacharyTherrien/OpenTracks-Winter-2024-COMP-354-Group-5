@@ -1,11 +1,17 @@
 package de.dennisguse.opentracks;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.Spinner;
 
 import androidx.annotation.Nullable;
+
+import java.util.Calendar;
 
 import de.dennisguse.opentracks.databinding.TrackViewGearBinding;
 
@@ -14,14 +20,79 @@ import de.dennisguse.opentracks.databinding.TrackViewGearBinding;
  *
  * @author Sean Gregory, Zachary Therrien
  * */
-public class TrackViewGearActivity extends AbstractActivity{
-
+public class TrackViewGearActivity extends AbstractActivity
+{
     private TrackViewGearBinding viewBinding;
+    private DatePickerDialog datePickerDialog;
+    private Button dateButton;
+    private void InitDatePicker()
+    {
+        DatePickerDialog.OnDateSetListener dateSetListener = (datePicker, year, month, day) -> {
+            month++;
+            String date = makeDateString(day, month, year);
+            dateButton.setText(date);
+        };
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+
+
+        int style = AlertDialog.THEME_HOLO_LIGHT;
+
+        datePickerDialog = new DatePickerDialog(this, style, dateSetListener, year, month, day);
+    }
+
+    private String getTodaysDate()
+    {
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        month++;
+        return makeDateString(year, month, day);
+    }
+
+    private String makeDateString(int day, int month, int year)
+    {
+        return getMonthFormat(month) + " " + day + " " + year;
+    }
+
+    private String getMonthFormat(int month)
+    {
+        switch (month)
+        {
+            case 1: return "JAN";
+            case 2: return "FEB";
+            case 3: return "MAR";
+            case 4: return "APR";
+            case 5: return "MAY";
+            case 6: return "JUN";
+            case 7: return "JUL";
+            case 8: return "AUG";
+            case 9: return "SEP";
+            case 10: return "OCT";
+            case 11: return "NOV";
+            case 12: return "DEC";
+        }
+        return "ERR";
+    }
+
+    public void openDatePicker(View view)
+    {
+        datePickerDialog.show();
+    }
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setTitle("Ski Gear Tracker");
+
+        // Credit: https://www.youtube.com/watch?v=qCoidM98zNk
+        InitDatePicker();
+        dateButton = findViewById(R.id.datePickerButton);
+        dateButton.setText(getTodaysDate());
 
         // Credit: https://stackoverflow.com/questions/13377361/how-to-create-a-drop-down-list
         Spinner skiDropdown = findViewById(R.id.skiDropDown);
@@ -42,6 +113,7 @@ public class TrackViewGearActivity extends AbstractActivity{
 
         setSupportActionBar(viewBinding.bottomAppBarLayout.bottomAppBar);
     }
+
 
     @Override
     protected View getRootView() {
