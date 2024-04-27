@@ -36,7 +36,7 @@ public class TrackViewGearActivity extends AbstractActivity{
         poleDropdown.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,
                 new String[]{"Cool Poles", "Grounded Poles", "/pol/"}));
 
-        Spinner resortDropdown = findViewById(R.id.poleDropDown);
+        Spinner resortDropdown = findViewById(R.id.resortDropDown);
         resortDropdown.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,
                 new String[]{"Printre Noi Resort", "Big White Ski Resort", "Jackson Hole Resort", "Lake Louise Ski Resort", "Romanian Resort"}));
 
