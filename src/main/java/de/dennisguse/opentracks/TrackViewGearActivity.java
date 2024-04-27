@@ -23,15 +23,22 @@ public class TrackViewGearActivity extends AbstractActivity{
         super.onCreate(savedInstanceState);
         setTitle("Ski Gear Tracker");
 
-        //get the spinner from the xml.
+        // Credit: https://stackoverflow.com/questions/13377361/how-to-create-a-drop-down-list
         Spinner skiDropdown = findViewById(R.id.skiDropDown);
-        //create a list of items for the spinner.
-        String[] items = new String[]{"coolSki", "epicSki", "ski3"};
-        //create an adapter to describe how the items are displayed, adapters are used in several places in android.
-        //There are multiple variations of this, but this is the basic variant.
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-        //set the spinners adapter to the previously created one.
-        skiDropdown.setAdapter(adapter);
+        skiDropdown.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,
+                new String[]{"Cross-Country Skis", "Downhill Skis", "Miscellaneous Skis", "Child Skis"}));
+
+        Spinner bootDropdown = findViewById(R.id.bootDropDown);
+        bootDropdown.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,
+                new String[]{"Snow Boots", "Spiky Boots", "Leather Boots", "Iron Boots"}));
+
+        Spinner poleDropdown = findViewById(R.id.poleDropDown);
+        poleDropdown.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,
+                new String[]{"Cool Poles", "Grounded Poles", "/pol/"}));
+
+        Spinner resortDropdown = findViewById(R.id.poleDropDown);
+        resortDropdown.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,
+                new String[]{"Printre Noi Resort", "Big White Ski Resort", "Jackson Hole Resort", "Lake Louise Ski Resort", "Romanian Resort"}));
 
         setSupportActionBar(viewBinding.bottomAppBarLayout.bottomAppBar);
     }
