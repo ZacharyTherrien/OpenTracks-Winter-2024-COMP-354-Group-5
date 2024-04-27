@@ -50,7 +50,7 @@ public class TrackViewGearActivity extends AbstractActivity
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
         month++;
-        return makeDateString(year, month, day);
+        return makeDateString(day, month, year);
     }
 
     private String makeDateString(int day, int month, int year)
