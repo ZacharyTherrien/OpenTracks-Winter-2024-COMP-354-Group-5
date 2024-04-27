@@ -5,17 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/infoSkiGear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Select gear that was rented"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <LinearLayout
         android:layout_width="409dp"
         android:layout_height="540dp"
@@ -24,6 +13,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/infoSkiGear">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/season_list_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:visibility="visible"
+                app:navigationIcon="@drawable/ic_seasonal_activity_24dp"
+                app:title="Seasonal Data" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <TextView
+            android:id="@+id/infoSkiGear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Select gear that was rented"
+            android:textAlignment="center"
+            android:textSize="18sp" />
 
         <LinearLayout
             android:id="@+id/skiLinearLayout"
@@ -143,5 +154,7 @@
         </LinearLayout>
 
     </LinearLayout>
-
+    <include
+        android:id="@+id/bottom_app_bar_layout"
+        layout="@layout/bottomappbar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
