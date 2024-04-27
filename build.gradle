@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 buildscript {
     repositories {
@@ -6,8 +7,9 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.2.2'
-    }
+    classpath 'com.android.tools.build:gradle:8.3.1'
+    classpath 'com.google.gms:google-services:4.4.1' // This line is added to include Google Services plugin
+}
 }
 
 allprojects {
@@ -126,6 +128,11 @@ android {
 }
 
 dependencies {
+
+    implementation 'com.google.firebase:firebase-firestore:24.10.3'
+    implementation 'junit:junit:4.12'
+    androidTestImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.4'
 
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -137,6 +144,7 @@ dependencies {
     implementation 'androidx.core:core:1.12.0'
     implementation 'androidx.core:core-splashscreen:1.0.1'
     implementation 'androidx.mediarouter:mediarouter:1.6.0'
+    implementation 'androidx.activity:activity-compose:1.8.2'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     implementation 'com.google.code.gson:gson:2.10.1'
     implementation 'com.github.dhaval2404:imagepicker:2.1'
@@ -149,4 +157,6 @@ dependencies {
     androidTestImplementation 'org.mockito:mockito-android:5.8.0'
 
     androidTestUtil 'androidx.test:orchestrator:1.4.2'
+
+    implementation 'com.google.code.gson:gson:2.10.1'
 }
