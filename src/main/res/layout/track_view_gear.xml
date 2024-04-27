@@ -150,6 +150,10 @@
                     android:background="@android:drawable/btn_dropdown"
                     android:spinnerMode="dropdown"
                     android:textAlignment="center" />
+
+                <include
+                    android:id="@+id/bottom_app_bar_layout"
+                    layout="@layout/bottomappbar" />
             </LinearLayout>
 
             <Switch
@@ -203,7 +207,5 @@
         </LinearLayout>
 
     </LinearLayout>
-    <include
-        android:id="@+id/bottom_app_bar_layout"
-        layout="@layout/bottomappbar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
