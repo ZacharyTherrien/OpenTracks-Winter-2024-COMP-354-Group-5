@@ -14,6 +14,20 @@
         app:layout_constraintTop_toBottomOf="@+id/infoSkiGear"
         tools:layout_editor_absoluteX="10dp">
 
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/season_list_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:visibility="visible"
+                app:navigationIcon="@drawable/ic_seasonal_activity_24dp"
+                app:title="Seasonal Data" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
         <LinearLayout
             android:id="@+id/resortDateLayout"
             android:layout_width="match_parent"
@@ -58,19 +72,6 @@
                     android:textAlignment="center" />
             </LinearLayout>
         </LinearLayout>
-
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/season_list_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:visibility="visible"
-                app:navigationIcon="@drawable/ic_seasonal_activity_24dp"
-                app:title="Seasonal Data" />
-        </com.google.android.material.appbar.AppBarLayout>
 
         <TextView
             android:id="@+id/infoSkiGear"
